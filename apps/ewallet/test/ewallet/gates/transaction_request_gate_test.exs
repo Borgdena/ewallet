@@ -19,9 +19,9 @@ defmodule EWallet.TransactionRequestTest do
     }
   end
 
-  describe "create/1 with account_id" do
+  describe "create_from_attrs/1 with account_id" do
     test "with nil account_id and no address", meta do
-      res = TransactionRequestGate.create(%{
+      res = TransactionRequestGate.create_from_attrs(%{
         "type" => "receive",
         "token_id" => meta.minted_token.friendly_id,
         "correlation_id" => "123",
@@ -33,7 +33,7 @@ defmodule EWallet.TransactionRequestTest do
     end
 
     test "with invalid account_id and no address", meta do
-      res = TransactionRequestGate.create(%{
+      res = TransactionRequestGate.create_from_attrs(%{
         "type" => "receive",
         "token_id" => meta.minted_token.friendly_id,
         "correlation_id" => "123",
@@ -45,7 +45,7 @@ defmodule EWallet.TransactionRequestTest do
     end
 
     test "with valid account_id and nil address", meta do
-      res = TransactionRequestGate.create(%{
+      res = TransactionRequestGate.create_from_attrs(%{
         "type" => "receive",
         "token_id" => meta.minted_token.friendly_id,
         "correlation_id" => "123",
@@ -58,7 +58,7 @@ defmodule EWallet.TransactionRequestTest do
     end
 
     test "with valid account_id and no address", meta do
-      {res, request} = TransactionRequestGate.create(%{
+      {res, request} = TransactionRequestGate.create_from_attrs(%{
         "type" => "receive",
         "token_id" => meta.minted_token.friendly_id,
         "correlation_id" => "123",
@@ -71,7 +71,7 @@ defmodule EWallet.TransactionRequestTest do
     end
 
     test "with valid account_id and a valid address", meta do
-      {res, request} = TransactionRequestGate.create(%{
+      {res, request} = TransactionRequestGate.create_from_attrs(%{
         "type" => "receive",
         "token_id" => meta.minted_token.friendly_id,
         "correlation_id" => "123",
@@ -86,7 +86,7 @@ defmodule EWallet.TransactionRequestTest do
     end
 
     test "with valid account_id and an invalid address", meta do
-      res = TransactionRequestGate.create(%{
+      res = TransactionRequestGate.create_from_attrs(%{
        "type" => "receive",
        "token_id" => meta.minted_token.friendly_id,
        "correlation_id" => "123",
@@ -99,7 +99,7 @@ defmodule EWallet.TransactionRequestTest do
     end
 
     test "with valid account_id and an address that does not belong to the account", meta do
-      res = TransactionRequestGate.create(%{
+      res = TransactionRequestGate.create_from_attrs(%{
        "type" => "receive",
        "token_id" => meta.minted_token.friendly_id,
        "correlation_id" => "123",
@@ -112,9 +112,9 @@ defmodule EWallet.TransactionRequestTest do
     end
   end
 
-  describe "create/1 with provider_user_id" do
+  describe "create_from_attrs/1 with provider_user_id" do
     test "with nil provider_user_id and no address", meta do
-      res = TransactionRequestGate.create(%{
+      res = TransactionRequestGate.create_from_attrs(%{
         "type" => "receive",
         "token_id" => meta.minted_token.friendly_id,
         "correlation_id" => "123",
@@ -126,7 +126,7 @@ defmodule EWallet.TransactionRequestTest do
     end
 
     test "with invalid provider_user_id and no address", meta do
-      res = TransactionRequestGate.create(%{
+      res = TransactionRequestGate.create_from_attrs(%{
         "type" => "receive",
         "token_id" => meta.minted_token.friendly_id,
         "correlation_id" => "123",
@@ -138,7 +138,7 @@ defmodule EWallet.TransactionRequestTest do
     end
 
     test "with valid provider_user_id and no address", meta do
-      {res, request} = TransactionRequestGate.create(%{
+      {res, request} = TransactionRequestGate.create_from_attrs(%{
         "type" => "receive",
         "token_id" => meta.minted_token.friendly_id,
         "correlation_id" => "123",
@@ -151,7 +151,7 @@ defmodule EWallet.TransactionRequestTest do
     end
 
     test "with valid provider_user_id and a valid address", meta do
-      {res, request} = TransactionRequestGate.create(%{
+      {res, request} = TransactionRequestGate.create_from_attrs(%{
         "type" => "receive",
         "token_id" => meta.minted_token.friendly_id,
         "correlation_id" => "123",
@@ -165,7 +165,7 @@ defmodule EWallet.TransactionRequestTest do
     end
 
     test "with valid provider_user_id and an invalid address", meta do
-      res = TransactionRequestGate.create(%{
+      res = TransactionRequestGate.create_from_attrs(%{
         "type" => "receive",
         "token_id" => meta.minted_token.friendly_id,
         "correlation_id" => "123",
@@ -178,7 +178,7 @@ defmodule EWallet.TransactionRequestTest do
     end
 
     test "with valid provider_user_id and an address that does not belong to the user", meta do
-      res = TransactionRequestGate.create(%{
+      res = TransactionRequestGate.create_from_attrs(%{
         "type" => "receive",
         "token_id" => meta.minted_token.friendly_id,
         "correlation_id" => "123",
@@ -191,9 +191,9 @@ defmodule EWallet.TransactionRequestTest do
     end
   end
 
-  describe "create/1 with address" do
+  describe "create_from_attrs/1 with address" do
     test "with nil address", meta do
-      res = TransactionRequestGate.create(%{
+      res = TransactionRequestGate.create_from_attrs(%{
         "type" => "receive",
         "token_id" => meta.minted_token.friendly_id,
         "correlation_id" => "123",
@@ -205,7 +205,7 @@ defmodule EWallet.TransactionRequestTest do
     end
 
     test "with a valid address", meta do
-      {res, request} = TransactionRequestGate.create(%{
+      {res, request} = TransactionRequestGate.create_from_attrs(%{
         "type" => "receive",
         "token_id" => meta.minted_token.friendly_id,
         "correlation_id" => "123",
@@ -218,7 +218,7 @@ defmodule EWallet.TransactionRequestTest do
     end
 
     test "with an invalid address", meta do
-      res = TransactionRequestGate.create(%{
+      res = TransactionRequestGate.create_from_attrs(%{
         "type" => "receive",
         "token_id" => meta.minted_token.friendly_id,
         "correlation_id" => "123",
@@ -231,9 +231,9 @@ defmodule EWallet.TransactionRequestTest do
 
   end
 
-  describe "create/1 with invalid parameters" do
+  describe "create_from_attrs/1 with invalid parameters" do
     test "with invalid parameters", meta do
-      res = TransactionRequestGate.create(%{
+      res = TransactionRequestGate.create_from_attrs(%{
         "type" => "receive",
         "token_id" => meta.minted_token.friendly_id,
         "correlation_id" => "123",

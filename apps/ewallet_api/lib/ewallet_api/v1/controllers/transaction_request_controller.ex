@@ -11,7 +11,7 @@ defmodule EWalletAPI.V1.TransactionRequestController do
 
   def create(%{assigns: %{account: _}} = conn, attrs) do
     attrs
-    |> TransactionRequestGate.create()
+    |> TransactionRequestGate.create_from_attrs()
     |> respond(conn)
   end
 
